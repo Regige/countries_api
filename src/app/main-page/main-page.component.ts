@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from '../shared/header/header.component';
 import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
+import { CountryCardComponent } from './country-card/country-card.component';
 
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [HeaderComponent, CountryCardComponent],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'
 })

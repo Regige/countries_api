@@ -1,2 +1,7 @@
 <app-header></app-header>
-<p>main-page works!</p>
+<div></div>
+<main>
+  @for (country of data.countries; track $index) {
+  <app-country-card [country]="country"></app-country-card>
+  }
+</main>

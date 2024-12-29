@@ -1,0 +1,17 @@
+.country-card {
+    display: flex;
+    flex-direction: column;
+    // align-items: start;
+        img {
+            width: 120px;
+            // height: 40px;
+        }
+        
+        .country-info {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 4px;
+            padding: 16px;
+        }
+}
