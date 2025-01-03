@@ -1,5 +1,8 @@
 <app-header></app-header>
-<div></div>
+<div class="nav-search">
+  <input type="text" name="" id="" />
+  <button>Filter by Region</button>
+</div>
 <main>
   @for (country of data.countries; track $index) {
   <app-country-card [country]="country"></app-country-card>
