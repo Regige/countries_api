@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../shared/header/header.component';
 import { DataService } from '../services/data.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CountryCardComponent } from './country-card/country-card.component';
 
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [HeaderComponent, CountryCardComponent],
+  imports: [HeaderComponent, CountryCardComponent, RouterLink],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'
 })
@@ -38,6 +38,11 @@ export class MainPageComponent {
       console.log(e);
       this.errorData = true;
     }
+  }
+
+
+  showSglFlag(country: any) {
+
   }
 
 }

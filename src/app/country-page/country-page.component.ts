@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../shared/header/header.component';
+import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-country-page',
@@ -9,5 +11,27 @@ import { HeaderComponent } from '../shared/header/header.component';
   styleUrl: './country-page.component.scss'
 })
 export class CountryPageComponent {
+  country: any;
 
+  constructor(
+    private route: ActivatedRoute,
+    private dataService: DataService
+  ) {}
+
+  ngOnInit(): void {
+    // Name aus URL auslesen
+    const countryName = this.route.snapshot.paramMap.get('name');
+    console.log(countryName);
+    // Land aus einer Liste oder API laden
+    if(countryName) {
+      this.country = this.dataService.getCountryByName(countryName);
+  
+      if (!this.country) {
+        console.error('Country not found!');
+        // Eventuell zu einer Fehlerseite umleiten
+      } else {
+        console.log("So sieht das Land aus:" , this.country);
+      }
+    }
+  }
 }

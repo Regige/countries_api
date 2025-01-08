@@ -13,6 +13,9 @@
 </div>
 <main>
   @for (country of data.countries; track $index) {
-  <app-country-card [country]="country"></app-country-card>
+  <app-country-card
+    [country]="country"
+    [routerLink]="['/country', country.name.common]"
+  ></app-country-card>
   }
 </main>

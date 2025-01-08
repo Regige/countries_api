@@ -35,4 +35,10 @@ loadCountries(url:string) {
   // }
 
 
+  getCountryByName(name: string): any {
+    return this.countries.find(
+      (country: any) => country.name.common.toLowerCase() === name.toLowerCase()
+    );
+  }
+
 }
