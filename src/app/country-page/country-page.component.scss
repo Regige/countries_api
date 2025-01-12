@@ -1,0 +1,27 @@
+@import './../../styles.scss';
+
+.back-btn-con {
+    margin: 82px 0 0 0;
+    width: 100vw;
+    padding: 32px 80px;
+
+    button {
+        padding: 16px 24px 16px 48px;
+    }
+}
+
+.country-card {
+    display: flex;
+    align-items: start;
+    // justify-content: space-between;
+    gap: 64px;
+    padding: 32px 80px;
+
+    img {
+        width: 480px;
+    }
+
+    .country-info {
+        width: 480px;
+    }
+}

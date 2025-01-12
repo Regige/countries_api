@@ -1,2 +1,32 @@
 <app-header></app-header>
-<p>country-page works!</p>
+<nav class="back-btn-con">
+  <button class="filter-btn btn-shadow" [routerLink]="['']">Back</button>
+</nav>
+<div class="country-card">
+  <img [src]="country.flags.png" alt="" />
+  <div class="country-info">
+    <h3>{{ country.name.common }}</h3>
+    <div>
+      <h5>
+        Population: <span>{{ country.population }}</span>
+      </h5>
+      <h5>
+        Region: <span>{{ country.region }}</span>
+      </h5>
+      <h5>
+        Capital: <span>{{ country.capital }}</span>
+      </h5>
+    </div>
+    <div>
+      <h5>Border Countries:</h5>
+      @if (country.borders.length > 0) { @for (border of country.borders; track
+      $index) {
+      <button class="filter-btn btn-shadow" [routerLink]="['/flag', border]">
+        {{ border }}
+      </button>
+      } } @else {
+      <h5>No countries</h5>
+      }
+    </div>
+  </div>
+</div>

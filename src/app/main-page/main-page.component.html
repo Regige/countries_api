@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="nav-search">
-  <div class="search-field-con">
+  <div class="search-field-con btn-shadow">
     <input
       type="text"
       name=""
@@ -9,13 +9,13 @@
       placeholder="Search for a country..."
     />
   </div>
-  <button class="filter-btn">Filter by Region</button>
+  <button class="filter-btn btn-shadow">Filter by Region</button>
 </div>
 <main>
   @for (country of data.countries; track $index) {
   <app-country-card
     [country]="country"
-    [routerLink]="['/country', country.name.common]"
+    [routerLink]="['/flag', country.name.common]"
   ></app-country-card>
   }
 </main>
