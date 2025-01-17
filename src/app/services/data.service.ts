@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import { Country } from '../interfaces/country';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class DataService {
 
 // Get Countries
 
-loadCountries(url:string) {
-    return lastValueFrom(this.http.get(url));
+  loadCountries(url:string) {
+      return lastValueFrom(this.http.get(url));
   }
 
 
@@ -40,5 +41,25 @@ loadCountries(url:string) {
       (country: any) => country.name.common.toLowerCase() === name.toLowerCase()
     );
   }
+
+
+  transformCountriesData(rawCountries: any[]): Country[] {
+  return rawCountries.map(country => ({
+    name: country.name?.common || 'Unknown',
+    topLevelDomain: country.tld || [],
+    capital: country.capital?.[0] || 'No Capital',
+    subregion: country.subregion || 'Unknown',
+    region: country.region || 'Unknown',
+    population: country.population || 0,
+    borders: country.borders || [],
+    // nativeName: Object.values(country.name?.nativeName || {}).map(n => n.official || 'Unknown').join(', '),
+    flags: {
+      png: country.flags?.png || '',
+      svg: country.flags?.svg || ''
+    },
+    // currencies: Object.values(country.currencies || {}).map(c => c.name).join(', ') || 'No Currency',
+    languages: Object.values(country.languages || {}).join(', ') || 'No Languages'
+  }));
+}
 
 }

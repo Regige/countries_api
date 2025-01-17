@@ -21,8 +21,15 @@ export class MainPageComponent {
 
   async ngOnInit() {
     try {
-      this.data.countries = await this.data.loadCountries(this.data.urlAllCountries);
-      console.log("All countries: ", this.data.countries);
+      // this.data.countries = await this.data.loadCountries(this.data.urlAllCountries);
+      // console.log("All countries: ", this.data.countries);
+
+
+      const rawData: any = await this.data.loadCountries(this.data.urlAllCountries);
+      this.data.countries = this.data.transformCountriesData(rawData);
+      console.log("Transformed countries: ", this.data.countries);
+
+
       // this.data.videos = this.mapVideos(rawVideos);
       // this.sortVideos();
 
