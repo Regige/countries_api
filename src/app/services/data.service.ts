@@ -38,28 +38,26 @@ export class DataService {
 
   getCountryByName(name: string): any {
     return this.countries.find(
-      (country: any) => country.name.common.toLowerCase() === name.toLowerCase()
+      (country: any) => country.name.toLowerCase() === name.toLowerCase()
     );
   }
 
 
   transformCountriesData(rawCountries: any[]): Country[] {
-  return rawCountries.map(country => ({
-    name: country.name?.common || 'Unknown',
-    topLevelDomain: country.tld || [],
-    capital: country.capital?.[0] || 'No Capital',
-    subregion: country.subregion || 'Unknown',
-    region: country.region || 'Unknown',
-    population: country.population || 0,
-    borders: country.borders || [],
-    // nativeName: Object.values(country.name?.nativeName || {}).map(n => n.official || 'Unknown').join(', '),
-    flags: {
-      png: country.flags?.png || '',
-      svg: country.flags?.svg || ''
-    },
-    // currencies: Object.values(country.currencies || {}).map(c => c.name).join(', ') || 'No Currency',
-    languages: Object.values(country.languages || {}).join(', ') || 'No Languages'
-  }));
-}
+    return rawCountries.map(country => ({
+      name: country.name?.common || 'Unknown',
+      topLevelDomain: country.tld || [],
+      capital: country.capital || 'No Capital',
+      subregion: country.subregion || 'Unknown',
+      region: country.region || 'Unknown',
+      population: country.population || 0,
+      borders: country.borders || [],
+      // nativeName: Object.values(country.name?.nativeName || {}).map(n => n.official || 'Unknown').join(', '),
+      flag: country.flags?.png || '',
+      // currencies: Object.values(country.currencies || {}).map( c => c?.name || '') || ['No Currency'],
+
+      languages: Object.values(country.languages || []) || ['No Languages']
+    }));
+  }
 
 }

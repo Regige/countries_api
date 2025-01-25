@@ -26,6 +26,14 @@ export class MainPageComponent {
 
 
       const rawData: any = await this.data.loadCountries(this.data.urlAllCountries);
+      console.log("Untransformed countries: ", rawData);
+      // for (let index = 0; index < rawData.length; index++) {
+      //   const element = rawData[index];
+      //   console.log("Currencies", element.currencies);
+        
+      // }
+      
+
       this.data.countries = this.data.transformCountriesData(rawData);
       console.log("Transformed countries: ", this.data.countries);
 

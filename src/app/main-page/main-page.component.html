@@ -15,7 +15,7 @@
   @for (country of data.countries; track $index) {
   <app-country-card
     [country]="country"
-    [routerLink]="['/flag', country.name.common]"
+    [routerLink]="['/flag', country.name]"
   ></app-country-card>
   }
 </main>
