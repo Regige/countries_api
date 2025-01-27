@@ -8,7 +8,7 @@ import { Country } from '../interfaces/country';
 })
 export class DataService {
 
-  countries: any = [];
+  countries: Country[] = [];
   baseUrl = "https://restcountries.com/v3.1/all";
 
   urlAllCountries = this.baseUrl + '?fields=name,flags,tld,capital,subregion,region,population,borders,currencies,languages,cca3';
@@ -47,17 +47,33 @@ export class DataService {
     return rawCountries.map(country => ({
       name: country.name?.common || 'Unknown',
       topLevelDomain: country.tld || [],
+      cca3: country.cca3,
       capital: country.capital || 'No Capital',
       subregion: country.subregion || 'Unknown',
       region: country.region || 'Unknown',
       population: country.population || 0,
       borders: country.borders || [],
       // nativeName: Object.values(country.name?.nativeName || {}).map(n => n.official || 'Unknown').join(', '),
+      nativeName: country.name?.nativeName || {},
       flag: country.flags?.png || '',
       // currencies: Object.values(country.currencies || {}).map( c => c?.name || '') || ['No Currency'],
-
+      currencies: country.currencies,
       languages: Object.values(country.languages || []) || ['No Languages']
     }));
+  }
+
+
+  saveCountriesToSession(countries: Country[]) {
+    sessionStorage.setItem('countries', JSON.stringify(countries));
+  }
+
+  getCountriesFromSession(): Country[] {
+    const countries = sessionStorage.getItem('countries');
+    return countries ? JSON.parse(countries) : [];
+  }
+
+  getBorderCountries(borders: string[]): any[] {
+    return this.countries.filter((country: any) => borders.includes(country.cca3));
   }
 
 }

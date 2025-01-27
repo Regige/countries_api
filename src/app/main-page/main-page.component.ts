@@ -30,12 +30,18 @@ export class MainPageComponent {
       // for (let index = 0; index < rawData.length; index++) {
       //   const element = rawData[index];
       //   console.log("Currencies", element.currencies);
-        
+      // }
+
+      // for (let index = 0; index < rawData.length; index++) {
+      //   const element = rawData[index];
+      //   console.log("cca3", element.cca3);
       // }
       
 
       this.data.countries = this.data.transformCountriesData(rawData);
       console.log("Transformed countries: ", this.data.countries);
+
+      this.data.saveCountriesToSession(this.data.countries);
 
 
       // this.data.videos = this.mapVideos(rawVideos);

@@ -19,10 +19,13 @@
     </div>
     <div>
       <h5>Border Countries:</h5>
-      @if (country.borders.length > 0) { @for (border of country.borders; track
-      $index) {
-      <button class="filter-btn btn-shadow" [routerLink]="['/flag', border]">
-        {{ border }}
+      @if (borderCountries.length > 0) { @for (borderCountry of borderCountries;
+      track $index) {
+      <button
+        class="filter-btn btn-shadow"
+        [routerLink]="['/flag', borderCountry.name]"
+      >
+        {{ borderCountry.name }}
       </button>
       } } @else {
       <h5>No countries</h5>

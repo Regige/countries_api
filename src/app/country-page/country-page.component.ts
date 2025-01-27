@@ -3,6 +3,8 @@ import { HeaderComponent } from '../shared/header/header.component';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { Router, RouterLink } from '@angular/router';
+import { Country } from '../interfaces/country';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-country-page',
@@ -13,26 +15,42 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class CountryPageComponent {
   country: any;
+  borderCountries: Country[] = [];
+  routeSubscription: Subscription  | null = null;
 
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private data: DataService
   ) {}
 
   ngOnInit(): void {
-    // Name aus URL auslesen
-    const countryName = this.route.snapshot.paramMap.get('name');
-    console.log(countryName);
-    // Land aus einer Liste oder API laden
-    if(countryName) {
-      this.country = this.dataService.getCountryByName(countryName);
-  
-      if (!this.country) {
-        console.error('Country not found!');
-        // Eventuell zu einer Fehlerseite umleiten
-      } else {
-        console.log("So sieht das Land aus:" , this.country);
+    this.data.getCountriesFromSession();
+    
+    // const countryName = this.route.snapshot.paramMap.get('name');
+
+    this.routeSubscription = this.route.paramMap.subscribe(paramMap => {
+      const countryName = paramMap.get('name');
+
+      if(countryName) {
+        this.country = this.data.getCountryByName(countryName);
+    
+        if (!this.country) {
+          console.error('Country not found!');
+    
+        } else {
+          this.borderCountries = this.data.getBorderCountries(this.country.borders);
+          console.log("So sieht das Land aus:" , this.country);
+          console.log("So die Nachbarländer", this.borderCountries);
+        }
       }
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
     }
   }
+
+
 }
