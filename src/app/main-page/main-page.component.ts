@@ -34,6 +34,11 @@ export class MainPageComponent {
 
       // for (let index = 0; index < rawData.length; index++) {
       //   const element = rawData[index];
+      //   console.log("Native names", element.name.nativeName);
+      // }
+
+      // for (let index = 0; index < rawData.length; index++) {
+      //   const element = rawData[index];
       //   console.log("cca3", element.cca3);
       // }
       

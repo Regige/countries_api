@@ -6,25 +6,56 @@
   <img [src]="country.flag" alt="" />
   <div class="country-info">
     <h3>{{ country.name }}</h3>
-    <div>
-      <h5>
-        Population: <span>{{ country.population }}</span>
-      </h5>
-      <h5>
-        Region: <span>{{ country.region }}</span>
-      </h5>
-      <h5>
-        Capital: <span>{{ country.capital }}</span>
-      </h5>
+    <div class="country-info-top-con">
+      <div>
+        <h5>
+          Native Name: @if (processedNativeNames.length > 0) { @for (nativeName
+          of processedNativeNames; track $index) {
+          <span>{{ nativeName }} </span>
+          } } @else {
+          <span>No nativeName</span>
+          }
+        </h5>
+        <h5>
+          Population: <span>{{ country.population }}</span>
+        </h5>
+        <h5>
+          Region: <span>{{ country.region }}</span>
+        </h5>
+        <h5>
+          Sub Region: <span>{{ country.subregion }}</span>
+        </h5>
+        <h5>
+          Capital: <span>{{ country.capital }}</span>
+        </h5>
+      </div>
+      <div>
+        <h5>
+          Top Level Domain: <span>{{ country.topLevelDomain }}</span>
+        </h5>
+        <h5>
+          Currencies: @if (processedCurrencies.length > 0) { @for (currencie of
+          processedCurrencies; track $index) {
+          <span>{{ currencie }} </span>
+          } } @else {
+          <span>No currencies</span>
+          }
+        </h5>
+        <h5>
+          Languages: @if (country.languages.length > 0) { @for (language of
+          country.languages; track $index) {
+          <span>{{ language }} </span>
+          } } @else {
+          <span>No languages</span>
+          }
+        </h5>
+      </div>
     </div>
-    <div>
+    <div class="border-container">
       <h5>Border Countries:</h5>
       @if (borderCountries.length > 0) { @for (borderCountry of borderCountries;
       track $index) {
-      <button
-        class="filter-btn btn-shadow"
-        [routerLink]="['/flag', borderCountry.name]"
-      >
+      <button class="btn-shadow" [routerLink]="['/flag', borderCountry.name]">
         {{ borderCountry.name }}
       </button>
       } } @else {

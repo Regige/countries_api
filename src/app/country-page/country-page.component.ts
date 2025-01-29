@@ -16,6 +16,8 @@ import { Subscription } from 'rxjs';
 export class CountryPageComponent {
   country: any;
   borderCountries: Country[] = [];
+  processedCurrencies: string[] = [];
+  processedNativeNames: string[] = [];
   routeSubscription: Subscription  | null = null;
 
   constructor(
@@ -24,7 +26,7 @@ export class CountryPageComponent {
   ) {}
 
   ngOnInit(): void {
-    this.data.getCountriesFromSession();
+    this.data.countries = this.data.getCountriesFromSession();
     
     // const countryName = this.route.snapshot.paramMap.get('name');
 
@@ -39,8 +41,12 @@ export class CountryPageComponent {
     
         } else {
           this.borderCountries = this.data.getBorderCountries(this.country.borders);
+          this.processedCurrencies = this.data.processCurrencies(this.country.currencies);
+          this.processedNativeNames = this.data.processNativeNames(this.country.nativeName);
+
+          console.log("Alle native names: ", this.processedNativeNames);
+          
           console.log("So sieht das Land aus:" , this.country);
-          console.log("So die Nachbarländer", this.borderCountries);
         }
       }
     });

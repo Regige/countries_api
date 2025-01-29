@@ -25,20 +25,9 @@ export class DataService {
   }
 
 
-  // checkForSelVideo() {
-  //   const videoJson = sessionStorage.getItem('selected_video');
-
-  //   if (videoJson) {
-  //     const savedVideo: Video = JSON.parse(videoJson);
-
-  //     this.selVideo = savedVideo;
-  //   }
-  // }
-
-
   getCountryByName(name: string): any {
     return this.countries.find(
-      (country: any) => country.name.toLowerCase() === name.toLowerCase()
+      (country: Country) => country.name.toLowerCase() === name.toLowerCase()
     );
   }
 
@@ -74,6 +63,28 @@ export class DataService {
 
   getBorderCountries(borders: string[]): any[] {
     return this.countries.filter((country: any) => borders.includes(country.cca3));
+  }
+
+
+  processCurrencies(currencies: Record<string, { name: string; symbol?: string }> | undefined): string[] {
+    if (!currencies || Object.keys(currencies).length === 0) {
+      return ['No Currencies']; // Wenn keine Währungen vorhanden sind
+    }
+
+    return Object.values(currencies) // Hole die Währungsobjekte
+      .map(c => c?.name || '') // Extrahiere den Namen der Währung
+      .filter(name => name !== ''); // Entferne leere Namen
+  }
+
+
+  processNativeNames(nativeName: Record<string, { official: string; common?: string }> | undefined): string[] {
+    if (!nativeName || Object.keys(nativeName).length === 0) {
+      return ['No Native Name']; // Wenn keine Namen vorhanden sind
+    }
+
+    return Object.values(nativeName) // Hole die Native-Name-Objekte
+      .map(n => n?.common || '') // Extrahiere den offiziellen Namen
+      .filter(name => name !== ''); // Entferne leere Namen
   }
 
 }

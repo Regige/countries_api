@@ -23,5 +23,34 @@
 
     .country-info {
         width: 480px;
+
+        .country-info-top-con {
+            display: flex;
+            justify-content: space-between;
+
+            span {
+                color: gray;
+            }
+
+            div {
+                width: calc(50% - 5px);
+            }
+        }
+
+        .border-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+
+            button {
+                background-color: white;
+                border: none;
+                border-radius: 3px;
+                color: gray;
+                height: 24px;
+                min-width: 80px;
+            }
+        }
     }
 }
