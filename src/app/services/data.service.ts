@@ -8,7 +8,9 @@ import { Country } from '../interfaces/country';
 })
 export class DataService {
 
+  allCountries: Country[] = [];
   countries: Country[] = [];
+
   baseUrl = "https://restcountries.com/v3.1/all";
 
   urlAllCountries = this.baseUrl + '?fields=name,flags,tld,capital,subregion,region,population,borders,currencies,languages,cca3';

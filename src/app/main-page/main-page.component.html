@@ -2,6 +2,8 @@
 <div class="nav-search">
   <div class="search-field-con btn-shadow">
     <input
+      [(ngModel)]="searchQuery"
+      (input)="onSearch()"
       type="text"
       name=""
       id=""

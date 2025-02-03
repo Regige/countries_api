@@ -26,7 +26,7 @@ export class CountryPageComponent {
   ) {}
 
   ngOnInit(): void {
-    this.data.countries = this.data.getCountriesFromSession();
+    this.data.allCountries = this.data.getCountriesFromSession();
     
     // const countryName = this.route.snapshot.paramMap.get('name');
 

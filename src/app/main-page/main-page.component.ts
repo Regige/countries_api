@@ -1,20 +1,24 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../shared/header/header.component';
 import { DataService } from '../services/data.service';
 import { Router, RouterLink } from '@angular/router';
 import { CountryCardComponent } from './country-card/country-card.component';
+import { Country } from '../interfaces/country';
 
 
 @Component({
   selector: 'app-main-page',
   standalone: true,
-  imports: [HeaderComponent, CountryCardComponent, RouterLink],
+  imports: [HeaderComponent, CountryCardComponent, RouterLink, CommonModule, FormsModule],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'
 })
 export class MainPageComponent {
   
   errorData = false;
+  searchQuery: string = '';
 
 
   constructor(public data: DataService, private router: Router) {}
@@ -43,10 +47,11 @@ export class MainPageComponent {
       // }
       
 
-      this.data.countries = this.data.transformCountriesData(rawData);
-      console.log("Transformed countries: ", this.data.countries);
+      this.data.allCountries = this.data.transformCountriesData(rawData);
+      console.log("Transformed countries: ", this.data.allCountries);
+      this.data.countries = JSON.parse(JSON.stringify(this.data.allCountries));
 
-      this.data.saveCountriesToSession(this.data.countries);
+      this.data.saveCountriesToSession(this.data.allCountries);
 
 
       // this.data.videos = this.mapVideos(rawVideos);
@@ -69,6 +74,21 @@ export class MainPageComponent {
 
   showSglFlag(country: any) {
 
+  }
+
+
+  onSearch() {
+    const query = this.searchQuery.toLowerCase().trim();
+    if(query !== '') {
+      this.data.countries = this.data.allCountries.filter(country =>
+        country.name.toLowerCase().includes(query)
+      );
+    } else {
+        this.data.countries = JSON.parse(JSON.stringify(this.data.allCountries));
+    }
+
+    console.log('Search', this.data.countries);
+    
   }
 
 }
