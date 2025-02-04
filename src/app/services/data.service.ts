@@ -28,7 +28,7 @@ export class DataService {
 
 
   getCountryByName(name: string): any {
-    return this.countries.find(
+    return this.allCountries.find(
       (country: Country) => country.name.toLowerCase() === name.toLowerCase()
     );
   }

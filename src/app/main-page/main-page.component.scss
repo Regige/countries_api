@@ -38,6 +38,13 @@ main {
     .dropdown {
         position: relative;
         display: inline-block;
+
+        button {
+            height: 100%;
+            padding: 1px 48px 1px 16px;
+            width: 160px;
+            text-align: start;
+        }
     }
     
     .dropdown-menu {
@@ -64,5 +71,5 @@ main {
         background: #f0f0f0;
     }
 
-    
+
 }
