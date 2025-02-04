@@ -19,6 +19,9 @@ export class MainPageComponent {
   
   errorData = false;
   searchQuery: string = '';
+  showDropdown = false;
+  selectedRegion = 'All'; 
+  regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 
   constructor(public data: DataService, private router: Router) {}
@@ -88,7 +91,26 @@ export class MainPageComponent {
     }
 
     console.log('Search', this.data.countries);
-    
   }
+
+
+  toggleDropdown() {
+    this.showDropdown = !this.showDropdown;
+  }
+
+
+  filterByRegion(region: string) {
+    this.selectedRegion = region;
+    this.showDropdown = false; 
+
+    if (region === 'All') {
+      this.data.countries = JSON.parse(JSON.stringify(this.data.allCountries));
+    } else {
+      this.data.countries = this.data.allCountries.filter(
+        country => country.region === region
+      );
+    }
+  }
+
 
 }

@@ -11,7 +11,17 @@
       placeholder="Search for a country..."
     />
   </div>
-  <button class="filter-btn btn-shadow">Filter by Region</button>
+  <div class="dropdown">
+    <button class="filter-btn btn-shadow" (click)="toggleDropdown()">
+      {{ selectedRegion === "All" ? "Filter by Region" : selectedRegion }}
+    </button>
+
+    <ul class="dropdown-menu" *ngIf="showDropdown">
+      <li *ngFor="let region of regions" (click)="filterByRegion(region)">
+        {{ region }}
+      </li>
+    </ul>
+  </div>
 </div>
 <main>
   @for (country of data.countries; track $index) {
