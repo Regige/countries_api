@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../shared/header/header.component';
@@ -71,6 +71,15 @@ export class MainPageComponent {
     } catch(e) {
       console.log(e);
       this.errorData = true;
+    }
+  }
+
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    const target = event.target as HTMLElement; // Explizit als HTMLElement casten
+    if (target && !target.closest('.dropdown')) {
+      this.showDropdown = false;
     }
   }
 
