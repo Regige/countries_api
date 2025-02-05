@@ -23,10 +23,13 @@ main {
         padding: 0 0 0 10px;
         
         .search-field {
+            background-image: url("./../../assets/icons/search.svg");
+            background-repeat: no-repeat;
+            background-position: 0 50%;
             border: none;
             border-radius: 0 5px 5px 0;
             color: darkgray;
-            padding: 16px 24px;
+            padding: 16px 24px 16px 32px;
 
             &:focus {
                 outline: none;
@@ -40,6 +43,9 @@ main {
         display: inline-block;
 
         button {
+            background-image: url("./../../assets/icons/keyboard_arrow_down.svg");
+            background-repeat: no-repeat;
+            background-position: 122px 50%;
             height: 100%;
             padding: 1px 48px 1px 16px;
             width: 160px;

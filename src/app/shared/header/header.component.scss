@@ -7,23 +7,32 @@
     h2 {
         margin: 0;
     }
+
+    .action-con {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
 }
 
 
 .dark-mode-toggle {
-    background: none;
+    background-image: url("./../../../assets/icons/dark_mood.svg");
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    background-color: white;
     border: none;
     color: inherit;
     font: inherit;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    padding: 2px 4px 2px 30px;
 }
 
-.dark-mode-toggle .icon {
-    font-size: 1.5rem;
-}
+// .dark-mode-toggle .icon {
+//     font-size: 1.5rem;
+// }
 
 .dark-mode-toggle:hover {
     opacity: 0.8;

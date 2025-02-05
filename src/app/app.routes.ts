@@ -5,4 +5,6 @@ import { CountryPageComponent } from './country-page/country-page.component';
 export const routes: Routes = [
     { path: '', component: MainPageComponent},
     { path: 'flag/:name', component: CountryPageComponent},
+    // Hier noch ändern
+    { path: 'quiz', component: MainPageComponent},
 ];
