@@ -52,7 +52,8 @@ export class MainPageComponent {
 
       this.data.allCountries = this.data.transformCountriesData(rawData);
       console.log("Transformed countries: ", this.data.allCountries);
-      this.data.countries = JSON.parse(JSON.stringify(this.data.allCountries));
+      this.data.filteredCountries = JSON.parse(JSON.stringify(this.data.allCountries));
+      this.data.countries = this.data.filteredCountries;
 
       this.data.saveCountriesToSession(this.data.allCountries);
 
@@ -92,11 +93,11 @@ export class MainPageComponent {
   onSearch() {
     const query = this.searchQuery.toLowerCase().trim();
     if(query !== '') {
-      this.data.countries = this.data.allCountries.filter(country =>
+      this.data.countries = this.data.filteredCountries.filter(country =>
         country.name.toLowerCase().includes(query)
       );
     } else {
-        this.data.countries = JSON.parse(JSON.stringify(this.data.allCountries));
+        this.data.countries = this.data.filteredCountries;
     }
 
     console.log('Search', this.data.countries);
@@ -113,11 +114,13 @@ export class MainPageComponent {
     this.showDropdown = false; 
 
     if (region === 'All') {
-      this.data.countries = JSON.parse(JSON.stringify(this.data.allCountries));
+      this.data.filteredCountries = JSON.parse(JSON.stringify(this.data.allCountries));
+      this.data.countries = this.data.filteredCountries;
     } else {
-      this.data.countries = this.data.allCountries.filter(
+      this.data.filteredCountries = this.data.allCountries.filter(
         country => country.region === region
       );
+      this.data.countries = this.data.filteredCountries;
     }
   }
 

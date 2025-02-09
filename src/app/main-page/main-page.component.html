@@ -24,10 +24,13 @@
   </div>
 </div>
 <main>
-  @for (country of data.countries; track $index) {
+  @if(data.countries.length !== 0) { @for (country of data.countries; track
+  $index) {
   <app-country-card
     [country]="country"
     [routerLink]="['/flag', country.name]"
   ></app-country-card>
+  }} @else {
+  <span>No countries found.</span>
   }
 </main>

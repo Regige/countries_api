@@ -9,6 +9,7 @@ import { Country } from '../interfaces/country';
 export class DataService {
 
   allCountries: Country[] = [];
+  filteredCountries: Country[] = [];
   countries: Country[] = [];
 
   baseUrl = "https://restcountries.com/v3.1/all";
@@ -17,7 +18,6 @@ export class DataService {
 
 
   constructor(private http: HttpClient) { }
-
 
 
 // Get Countries
