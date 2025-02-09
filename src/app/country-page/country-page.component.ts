@@ -5,11 +5,12 @@ import { DataService } from '../services/data.service';
 import { Router, RouterLink } from '@angular/router';
 import { Country } from '../interfaces/country';
 import { Subscription } from 'rxjs';
+import { BackBtnComponent } from "../shared/back-btn/back-btn.component";
 
 @Component({
   selector: 'app-country-page',
   standalone: true,
-  imports: [HeaderComponent, RouterLink],
+  imports: [HeaderComponent, RouterLink, BackBtnComponent],
   templateUrl: './country-page.component.html',
   styleUrl: './country-page.component.scss'
 })
