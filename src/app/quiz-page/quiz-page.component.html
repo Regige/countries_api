@@ -2,5 +2,26 @@
 <app-back-btn></app-back-btn>
 <main>
   <h3>Which countries flag is that?</h3>
-  <div></div>
+  <div>
+    <img [src]="ranCountry.flag" alt="" />
+    <div class="flag-quiz">
+      <input
+        type="text"
+        [(ngModel)]="userInput"
+        (input)="onInputChange()"
+        placeholder="Gib ein Land ein..."
+        class="country-input"
+      />
+
+      <ul *ngIf="filteredCountries.length > 0" class="suggestions-list">
+        <li
+          *ngFor="let country of filteredCountries"
+          (click)="selectCountry(country)"
+          class="suggestion-item"
+        >
+          {{ country.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
 </main>
