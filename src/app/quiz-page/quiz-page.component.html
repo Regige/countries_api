@@ -1,7 +1,7 @@
-<app-header></app-header>
+<!-- <app-header></app-header>
 <app-back-btn></app-back-btn>
 <main>
-  <h3>Which countries flag is that?</h3>
+  <h3>Which country's flag is this?</h3>
   <div>
     <img [src]="ranCountry.flag" alt="" />
     <div class="flag-quiz">
@@ -22,6 +22,62 @@
           {{ country.name }}
         </li>
       </ul>
+    </div>
+  </div>
+</main> -->
+
+<app-header></app-header>
+<app-back-btn></app-back-btn>
+
+<main>
+  <h3>Which country's flag is this?</h3>
+
+  <div class="flag-container">
+    <img [src]="ranCountry.flag" alt="Country Flag" class="flag-img" />
+
+    <div class="flag-quiz">
+      <input
+        type="text"
+        [(ngModel)]="userInput"
+        (input)="onInputChange()"
+        (keyup.enter)="checkAnswer()"
+        (keyup.escape)="skipFlag()"
+        placeholder="Enter country name..."
+        class="country-input"
+      />
+
+      <!-- 🔹 Vorschlagsliste -->
+      <ul *ngIf="filteredCountries.length > 0" class="suggestions-list">
+        <li
+          *ngFor="let country of filteredCountries"
+          (click)="selectCountry(country)"
+          class="suggestion-item"
+        >
+          {{ country.name }}
+        </li>
+      </ul>
+
+      <!-- 🔹 Buttons -->
+      <div class="button-group">
+        <button (click)="checkAnswer()" class="btn check-btn">Check</button>
+        <button (click)="skipFlag()" class="btn skip-btn">Skip</button>
+      </div>
+    </div>
+
+    <!-- 🔹 Feedback (Richtig/Falsch) -->
+    <p
+      *ngIf="showFeedback"
+      [ngClass]="{ correct: isCorrect, wrong: !isCorrect }"
+    >
+      {{ feedbackMessage }}
+    </p>
+
+    <!-- 🔹 Mehr Infos + Weiter -->
+    <div class="info-next">
+      <button *ngIf="isCorrect" (click)="showMoreInfo()" class="btn info-btn">
+        More Info
+      </button>
+      <button (click)="nextFlag()" class="btn next-btn">Next Flag</button>
     </div>
   </div>
 </main>

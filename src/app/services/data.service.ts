@@ -37,6 +37,7 @@ export class DataService {
   transformCountriesData(rawCountries: any[]): Country[] {
     return rawCountries.map(country => ({
       name: country.name?.common || 'Unknown',
+      official: country.name.official || 'Unknown',
       topLevelDomain: country.tld || [],
       cca3: country.cca3,
       capital: country.capital || 'No Capital',

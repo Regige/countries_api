@@ -1,40 +1,114 @@
 main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 32px 80px;
+}
 
-    .flag-quiz {
-            position: relative;
-            width: 300px;
-        }
-    
-        .country-input {
-            width: 100%;
-            padding: 8px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-    
-        .suggestions-list {
-            position: absolute;
-            width: 100%;
-            border: 1px solid #ccc;
-            border-top: none;
-            max-height: 150px;
-            overflow-y: auto;
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-    
-        .suggestion-item {
-            padding: 8px;
-            cursor: pointer;
-        }
-    
-        .suggestion-item:hover {
-            background-color: #f0f0f0;
-        }
+.flag-quiz {
+    position: relative;
+    width: 300px;
+}
+
+.country-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.suggestions-list {
+    position: absolute;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* 🔹 Flaggenbild */
+.flag-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.flag-img {
+    width: 200px;
+    height: auto;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+/* 🔹 Buttons */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.2s ease-in-out;
+}
+
+.check-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.skip-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.info-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.next-btn {
+    background-color: #ffc107;
+    color: black;
+}
+
+/* 🔹 Antwort-Feedback */
+.feedback {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.correct {
+    color: green;
+}
+
+.wrong {
+    color: red;
+}
+
+/* 🔹 Info & Weiter */
+.info-next {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
 }

@@ -1,5 +1,6 @@
 export interface Country {
   name: string;
+  official: string;
   topLevelDomain: string[];
   cca3: string;
   capital: string[];
