@@ -32,39 +32,12 @@
 <main>
   <h3>Which country's flag is this?</h3>
 
+  @if (round < 11) {
+
+  <span>{{ round }} / 10 </span>
+
   <div class="flag-container">
     <img [src]="ranCountry.flag" alt="Country Flag" class="flag-img" />
-
-    <div class="flag-quiz">
-      <input
-        type="text"
-        [(ngModel)]="userInput"
-        (input)="onInputChange()"
-        (keyup.enter)="checkAnswer()"
-        (keyup.escape)="skipFlag()"
-        placeholder="Enter country name..."
-        class="country-input"
-      />
-
-      <!-- 🔹 Vorschlagsliste -->
-      <ul *ngIf="filteredCountries.length > 0" class="suggestions-list">
-        <li
-          *ngFor="let country of filteredCountries"
-          (click)="selectCountry(country)"
-          class="suggestion-item"
-        >
-          {{ country.name }}
-        </li>
-      </ul>
-
-      <!-- 🔹 Buttons -->
-      <div class="button-group">
-        <button (click)="checkAnswer()" class="btn check-btn">Check</button>
-        <button (click)="skipFlag()" class="btn skip-btn">Skip</button>
-      </div>
-    </div>
-
-    <!-- 🔹 Feedback (Richtig/Falsch) -->
     <p
       *ngIf="showFeedback"
       [ngClass]="{ correct: isCorrect, wrong: !isCorrect }"
@@ -72,12 +45,75 @@
       {{ feedbackMessage }}
     </p>
 
+    <div class="flag-quiz">
+      <div>
+        <input
+          type="text"
+          [(ngModel)]="userInput"
+          (input)="onInputChange()"
+          (keyup.enter)="checkAnswer()"
+          (keyup.escape)="skipFlag()"
+          placeholder="Enter country name..."
+          class="country-input"
+        />
+
+        <!-- 🔹 Vorschlagsliste -->
+        <ul *ngIf="filteredCountries.length > 0" class="suggestions-list">
+          <li
+            *ngFor="let country of filteredCountries"
+            (click)="selectCountry(country)"
+            class="suggestion-item"
+          >
+            {{ country.name }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- 🔹 Buttons -->
+      <div class="button-group">
+        <button
+          (click)="checkAnswer()"
+          class="btn check-btn"
+          [disabled]="showFeedback"
+          [ngClass]="{ 'disabled-btn': showFeedback }"
+        >
+          Check
+        </button>
+        <button
+          (click)="skipFlag()"
+          class="btn skip-btn"
+          [disabled]="showFeedback"
+          [ngClass]="{ 'disabled-btn': showFeedback }"
+        >
+          ?
+        </button>
+      </div>
+    </div>
+
+    <!-- 🔹 Feedback (Richtig/Falsch) -->
+
     <!-- 🔹 Mehr Infos + Weiter -->
+    @if (showFeedback === true) {
     <div class="info-next">
-      <button *ngIf="isCorrect" (click)="showMoreInfo()" class="btn info-btn">
+      <!-- <button *ngIf="isCorrect" (click)="showMoreInfo()" class="btn info-btn">
         More Info
-      </button>
+      </button> -->
       <button (click)="nextFlag()" class="btn next-btn">Next Flag</button>
     </div>
+    }
   </div>
+  } @else {
+  <div class="result-container">
+    <h3>Your score</h3>
+    <p>You knew {{ correctAnswers }} flags out of 10!</p>
+    @if(correctAnswers > 8) {
+    <span>Well done!</span>
+    } @else if (correctAnswers > 4 && correctAnswers > 9) {
+    <span>Not bad!</span>
+    } @else {
+    <span>Next time it will be better!</span>
+    }
+    <button (click)="startNewGame()">Try agin</button>
+  </div>
+  }
 </main>

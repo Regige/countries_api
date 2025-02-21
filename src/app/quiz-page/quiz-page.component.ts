@@ -24,6 +24,8 @@ export class QuizPageComponent {
   showFeedback = false;
   isCorrect = false;
   feedbackMessage = "";
+  round = 1;
+  correctAnswers = 0;
 
   constructor(private data: DataService) {
   }
@@ -89,10 +91,13 @@ export class QuizPageComponent {
 
 
 
-    checkAnswer() {
+  checkAnswer() {
     if (this.userInput.toLowerCase() === this.ranCountry.name.toLowerCase()) {
       this.isCorrect = true;
       this.feedbackMessage = "Correct! ✅";
+      this.correctAnswers += 1;
+      console.log("Correct Answers: ", this.correctAnswers);
+      
     } else {
       this.isCorrect = false;
       this.feedbackMessage = `Wrong! ❌ The correct answer is: ${this.ranCountry.name}`;
@@ -109,6 +114,7 @@ export class QuizPageComponent {
   nextFlag() {
     this.ranCountry = this.getRandomCountry();
     this.userInput = "";
+    this.round += 1;
     this.showFeedback = false;
     this.filteredCountries = [];
   }
@@ -116,6 +122,17 @@ export class QuizPageComponent {
   showMoreInfo() {
     console.log("More info: ", this.ranCountry);
     
+  }
+
+  startNewGame() {
+    this.ranCountry = this.getRandomCountry();
+    this.userInput = "";
+    this.filteredCountries = [];
+    this.showFeedback = false;
+    this.isCorrect = false;
+    this.feedbackMessage = "";
+    this.round = 0;
+    this.correctAnswers = 0;
   }
 
 }

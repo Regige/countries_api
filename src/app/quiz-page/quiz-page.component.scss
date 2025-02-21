@@ -6,12 +6,16 @@ main {
 }
 
 .flag-quiz {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     position: relative;
-    width: 300px;
+    // width: 300px;
 }
 
 .country-input {
-    width: 100%;
+    // width: 100%;
+    width: 200px;
     padding: 8px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -20,7 +24,8 @@ main {
 
 .suggestions-list {
     position: absolute;
-    width: 100%;
+    // width: 100%;
+    width: 200px;
     border: 1px solid #ccc;
     border-top: none;
     max-height: 150px;
@@ -42,6 +47,7 @@ main {
     background-color: #f0f0f0;
 }
 
+
 /* 🔹 Flaggenbild */
 .flag-container {
     text-align: center;
@@ -59,7 +65,7 @@ main {
 .button-group {
     display: flex;
     gap: 10px;
-    margin-top: 10px;
+    // margin-top: 10px;
 }
 
 .btn {
@@ -71,6 +77,7 @@ main {
     transition: background 0.2s ease-in-out;
 }
 
+
 .check-btn {
     background-color: #28a745;
     color: white;
@@ -81,6 +88,8 @@ main {
     color: white;
 }
 
+
+// Not in use
 .info-btn {
     background-color: #007bff;
     color: white;
@@ -89,6 +98,11 @@ main {
 .next-btn {
     background-color: #ffc107;
     color: black;
+}
+
+
+.disabled-btn {
+    background-color: lightgray;
 }
 
 /* 🔹 Antwort-Feedback */
@@ -111,4 +125,11 @@ main {
     display: flex;
     gap: 10px;
     margin-top: 10px;
+}
+
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    
 }
