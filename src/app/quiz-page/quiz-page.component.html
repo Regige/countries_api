@@ -68,14 +68,14 @@
       <div class="button-group">
         @if (showFeedback !== true) {
         <button
-          (click)="checkAnswer()"
-          class="btn check-btn"
+          (click)="skipFlag()"
+          class="btn skip-btn"
           [disabled]="showFeedback"
           [ngClass]="{ 'disabled-btn': showFeedback }"
         ></button>
         <button
-          (click)="skipFlag()"
-          class="btn skip-btn"
+          (click)="checkAnswer()"
+          class="btn check-btn"
           [disabled]="showFeedback"
           [ngClass]="{ 'disabled-btn': showFeedback }"
         ></button>
