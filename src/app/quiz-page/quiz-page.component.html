@@ -30,7 +30,7 @@
 <app-back-btn></app-back-btn>
 
 <main>
-  <h3>Which country's flag is this?</h3>
+  <h2>Which country's flag is this?</h2>
 
   @if (round < 11) {
 
@@ -38,14 +38,8 @@
 
   <div class="flag-container">
     <img [src]="ranCountry.flag" alt="Country Flag" class="flag-img" />
-    <p
-      *ngIf="showFeedback"
-      [ngClass]="{ correct: isCorrect, wrong: !isCorrect }"
-    >
-      {{ feedbackMessage }}
-    </p>
 
-    <div class="flag-quiz">
+    <div class="action-container">
       <div>
         <input
           type="text"
@@ -55,6 +49,7 @@
           (keyup.escape)="skipFlag()"
           placeholder="Enter country name..."
           class="country-input"
+          [disabled]="showFeedback"
         />
 
         <!-- 🔹 Vorschlagsliste -->
@@ -71,36 +66,33 @@
 
       <!-- 🔹 Buttons -->
       <div class="button-group">
+        @if (showFeedback !== true) {
         <button
           (click)="checkAnswer()"
           class="btn check-btn"
           [disabled]="showFeedback"
           [ngClass]="{ 'disabled-btn': showFeedback }"
-        >
-          Check
-        </button>
+        ></button>
         <button
           (click)="skipFlag()"
           class="btn skip-btn"
           [disabled]="showFeedback"
           [ngClass]="{ 'disabled-btn': showFeedback }"
-        >
-          ?
-        </button>
+        ></button>
+        } @else if (showFeedback === true) {
+        <!-- <button *ngIf="isCorrect" (click)="showMoreInfo()" class="btn info-btn">
+          More Info
+        </button> -->
+        <button (click)="nextFlag()" class="btn next-btn"></button>
+        }
       </div>
+      <p
+        *ngIf="showFeedback"
+        [ngClass]="{ correct: isCorrect, wrong: !isCorrect }"
+      >
+        {{ feedbackMessage }}
+      </p>
     </div>
-
-    <!-- 🔹 Feedback (Richtig/Falsch) -->
-
-    <!-- 🔹 Mehr Infos + Weiter -->
-    @if (showFeedback === true) {
-    <div class="info-next">
-      <!-- <button *ngIf="isCorrect" (click)="showMoreInfo()" class="btn info-btn">
-        More Info
-      </button> -->
-      <button (click)="nextFlag()" class="btn next-btn">Next Flag</button>
-    </div>
-    }
   </div>
   } @else {
   <div class="result-container">

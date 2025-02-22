@@ -94,19 +94,19 @@ export class QuizPageComponent {
   checkAnswer() {
     if (this.userInput.toLowerCase() === this.ranCountry.name.toLowerCase()) {
       this.isCorrect = true;
-      this.feedbackMessage = "Correct! ✅";
+      this.feedbackMessage = "Correct!";
       this.correctAnswers += 1;
       console.log("Correct Answers: ", this.correctAnswers);
       
     } else {
       this.isCorrect = false;
-      this.feedbackMessage = `Wrong! ❌ The correct answer is: ${this.ranCountry.name}`;
+      this.feedbackMessage = `Correct answer: ${this.ranCountry.name}`;
     }
     this.showFeedback = true;
   }
 
   skipFlag() {
-    this.feedbackMessage = `Skipped! The correct answer was: ${this.ranCountry.name}`;
+    this.feedbackMessage = `Correct answer: ${this.ranCountry.name}`;
     this.isCorrect = false;
     this.showFeedback = true;
   }
