@@ -96,8 +96,6 @@ export class QuizPageComponent {
       this.isCorrect = true;
       this.feedbackMessage = "Correct!";
       this.correctAnswers += 1;
-      console.log("Correct Answers: ", this.correctAnswers);
-      
     } else {
       this.isCorrect = false;
       this.feedbackMessage = `Correct answer: ${this.ranCountry.name}`;
@@ -116,6 +114,7 @@ export class QuizPageComponent {
     this.userInput = "";
     this.round += 1;
     this.showFeedback = false;
+    this.isCorrect = false;
     this.filteredCountries = [];
   }
 

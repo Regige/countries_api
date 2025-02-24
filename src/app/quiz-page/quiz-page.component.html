@@ -31,10 +31,8 @@
 
 <main>
   <h2>Which country's flag is this?</h2>
-
   @if (round < 11) {
-
-  <span>{{ round }} / 10 </span>
+  <span class="info-rounds">{{ round }} / 10 </span>
 
   <div class="flag-container">
     <img [src]="ranCountry.flag" alt="Country Flag" class="flag-img" />
@@ -50,9 +48,9 @@
           placeholder="Enter country name..."
           class="country-input"
           [disabled]="showFeedback"
+          [ngClass]="{ 'correct-input': isCorrect }"
         />
 
-        <!-- 🔹 Vorschlagsliste -->
         <ul *ngIf="filteredCountries.length > 0" class="suggestions-list">
           <li
             *ngFor="let country of filteredCountries"
@@ -64,7 +62,6 @@
         </ul>
       </div>
 
-      <!-- 🔹 Buttons -->
       <div class="button-group">
         @if (showFeedback !== true) {
         <button
@@ -80,9 +77,7 @@
           [ngClass]="{ 'disabled-btn': showFeedback }"
         ></button>
         } @else if (showFeedback === true) {
-        <!-- <button *ngIf="isCorrect" (click)="showMoreInfo()" class="btn info-btn">
-          More Info
-        </button> -->
+
         <button (click)="nextFlag()" class="btn next-btn"></button>
         }
       </div>
@@ -96,8 +91,8 @@
   </div>
   } @else {
   <div class="result-container">
-    <h3>Your score</h3>
-    <p>You knew {{ correctAnswers }} flags out of 10!</p>
+    <h1>Your score</h1>
+    <span>You knew {{ correctAnswers }} flags out of 10!</span>
     @if(correctAnswers > 8) {
     <span>Well done!</span>
     } @else if (correctAnswers > 4 && correctAnswers > 9) {
@@ -105,7 +100,11 @@
     } @else {
     <span>Next time it will be better!</span>
     }
-    <button (click)="startNewGame()">Try agin</button>
+    <button (click)="startNewGame()" class="btn">Try agin</button>
   </div>
   }
 </main>
+
+<!-- <button *ngIf="isCorrect" (click)="showMoreInfo()" class="btn info-btn">
+          More Info
+        </button> -->
