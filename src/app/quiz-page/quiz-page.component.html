@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-back-btn></app-back-btn>
 
-<main>
+<main [class.dark-mode-elements]="darkMood.isDarkMode">
   <h2>Which country's flag is this?</h2>
   @if (round < 11) {
   <span class="info-rounds">{{ round }} / 10 </span>

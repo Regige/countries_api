@@ -19,7 +19,7 @@ main {
     }
 
     .info-rounds {
-        border: 1px solid gray;
+        border: 1px solid #ccc;
         padding: 8px;
         border-radius: 50px;
         position: absolute;
@@ -66,12 +66,12 @@ main {
 }
 
 .country-input {
-    // width: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     width: 200px;
     padding: 8px;
     font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
 
     &:focus {
         outline: none;

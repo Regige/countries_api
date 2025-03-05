@@ -10,7 +10,12 @@ button, input {
 }
 
 body.dark-mode {
-    background-color: #121212;
+    background-color: #212c36;
+    color: #ffffff;
+}
+
+.dark-mode-elements {
+    background-color: #2c3743 !important;
     color: #ffffff;
 }
 

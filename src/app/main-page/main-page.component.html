@@ -29,6 +29,7 @@
   <app-country-card
     [country]="country"
     [routerLink]="['/flag', country.name]"
+    [class.dark-mode-elements]="darkMood.isDarkMode"
   ></app-country-card>
   }} @else {
   <span>No countries found.</span>

@@ -6,6 +6,7 @@ import { DataService } from '../services/data.service';
 import { Router, RouterLink } from '@angular/router';
 import { CountryCardComponent } from './country-card/country-card.component';
 import { Country } from '../interfaces/country';
+import { DarkModeService } from '../servics/dark-mode.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class MainPageComponent {
   regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 
-  constructor(public data: DataService, private router: Router) {}
+  constructor(public data: DataService, private router: Router, public darkMood: DarkModeService) {}
 
   async ngOnInit() {
     try {

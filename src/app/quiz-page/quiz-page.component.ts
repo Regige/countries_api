@@ -6,6 +6,7 @@ import { Country } from '../interfaces/country';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import Fuse from 'fuse.js';
+import { DarkModeService } from '../servics/dark-mode.service';
 
 @Component({
   selector: 'app-quiz-page',
@@ -27,7 +28,7 @@ export class QuizPageComponent {
   round = 1;
   correctAnswers = 0;
 
-  constructor(private data: DataService) {
+  constructor(private data: DataService, public darkMood: DarkModeService) {
   }
 
 

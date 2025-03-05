@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { DarkModeService } from '../../servics/dark-mode.service';
 
 @Component({
   selector: 'app-header',
@@ -10,13 +11,13 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
 
-  isDarkMode = false;
 
 
+  constructor(public darkMood: DarkModeService) { }
   
   toggleDarkMode() {
-    this.isDarkMode = !this.isDarkMode;
-    document.body.classList.toggle('dark-mode', this.isDarkMode);
+    this.darkMood.isDarkMode = !this.darkMood.isDarkMode;
+    document.body.classList.toggle('dark-mode', this.darkMood.isDarkMode);
   }
 
 }
