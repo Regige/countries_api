@@ -1,8 +1,26 @@
 <div class="header-container" [class.dark-mode-elements]="darkMood.isDarkMode">
   <h2>Where in the world?</h2>
   <div class="action-con">
-    <a [routerLink]="['/quiz']">Quiz</a>
-    <button class="dark-mode-toggle" (click)="toggleDarkMode()">
+    <a
+      [routerLink]="['/quiz']"
+      [class.dark-mode-elements]="darkMood.isDarkMode"
+      [ngStyle]="{
+        'background-image': darkMood.isDarkMode
+          ? 'url(./../../assets/icons/casino_white.svg)'
+          : 'url(./../../assets/icons/casino.svg)'
+      }"
+      >Quiz</a
+    >
+    <button
+      class="dark-mode-toggle"
+      (click)="toggleDarkMode()"
+      [class.dark-mode-elements]="darkMood.isDarkMode"
+      [ngStyle]="{
+        'background-image': darkMood.isDarkMode
+          ? 'url(./../../assets/icons/dark_mood_white.svg)'
+          : 'url(./../../assets/icons/dark_mood.svg)'
+      }"
+    >
       <span class="text">Dark Mode</span>
     </button>
   </div>

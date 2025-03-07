@@ -6,7 +6,7 @@ import { DataService } from '../services/data.service';
 import { Router, RouterLink } from '@angular/router';
 import { CountryCardComponent } from './country-card/country-card.component';
 import { Country } from '../interfaces/country';
-import { DarkModeService } from '../servics/dark-mode.service';
+import { DarkModeService } from '../services/dark-mode.service';
 
 
 @Component({

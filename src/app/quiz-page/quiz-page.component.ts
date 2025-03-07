@@ -6,7 +6,7 @@ import { Country } from '../interfaces/country';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import Fuse from 'fuse.js';
-import { DarkModeService } from '../servics/dark-mode.service';
+import { DarkModeService } from '../services/dark-mode.service';
 
 @Component({
   selector: 'app-quiz-page',

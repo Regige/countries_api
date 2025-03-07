@@ -1,3 +1,9 @@
 <nav class="back-btn-con">
-  <button class="filter-btn btn-shadow" [routerLink]="['']">Back</button>
+  <button
+    class="filter-btn btn-shadow"
+    [routerLink]="['']"
+    [class.dark-mode-elements]="darkMood.isDarkMode"
+  >
+    Back
+  </button>
 </nav>

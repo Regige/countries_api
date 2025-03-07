@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { DarkModeService } from '../../services/dark-mode.service';
 
 @Component({
   selector: 'app-back-btn',
@@ -9,5 +10,9 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './back-btn.component.scss'
 })
 export class BackBtnComponent {
+
+  constructor(public darkMood: DarkModeService) {
+
+  }
 
 }

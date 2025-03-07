@@ -17,6 +17,14 @@ body.dark-mode {
 .dark-mode-elements {
     background-color: #2c3743 !important;
     color: #ffffff;
+
+    a {
+        color: white !important;
+    }
+
+    &::placeholder {
+        color: white !important;
+    }
 }
 
 

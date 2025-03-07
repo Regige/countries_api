@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { DarkModeService } from '../../servics/dark-mode.service';
+import { DarkModeService } from '../../services/dark-mode.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink ],
+  imports: [RouterLink, CommonModule ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

@@ -9,14 +9,34 @@
       id=""
       class="search-field"
       placeholder="Search for a country..."
+      [class.dark-mode-elements]="darkMood.isDarkMode"
+      [ngStyle]="{
+        color: darkMood.isDarkMode ? 'white' : 'darkgray',
+        'background-image': darkMood.isDarkMode
+          ? 'url(./../../assets/icons/search_white.svg)'
+          : 'url(./../../assets/icons/search.svg)'
+      }"
     />
   </div>
   <div class="dropdown">
-    <button class="filter-btn btn-shadow" (click)="toggleDropdown()">
+    <button
+      class="filter-btn btn-shadow"
+      (click)="toggleDropdown()"
+      [class.dark-mode-elements]="darkMood.isDarkMode"
+      [ngStyle]="{
+        'background-image': darkMood.isDarkMode
+          ? 'url(./../../assets/icons/keyboard_arrow_down_white.svg)'
+          : 'url(./../../assets/icons/keyboard_arrow_down.svg)'
+      }"
+    >
       {{ selectedRegion === "All" ? "Filter by Region" : selectedRegion }}
     </button>
 
-    <ul class="dropdown-menu" *ngIf="showDropdown">
+    <ul
+      class="dropdown-menu"
+      *ngIf="showDropdown"
+      [class.dark-mode-elements]="darkMood.isDarkMode"
+    >
       <li *ngFor="let region of regions" (click)="filterByRegion(region)">
         {{ region }}
       </li>

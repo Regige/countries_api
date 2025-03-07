@@ -14,7 +14,7 @@
         gap: 40px;
 
         a {
-            background-image: url("./../../../assets/icons/casino.svg");
+            // background-image: url("./../../../assets/icons/casino.svg");
             background-repeat: no-repeat;
             background-position: 0 50%;
             color: black;
@@ -31,7 +31,7 @@
 
 
 .dark-mode-toggle {
-    background-image: url("./../../../assets/icons/dark_mood.svg");
+    // background-image: url("./../../../assets/icons/dark_mood.svg");
     background-repeat: no-repeat;
     background-position: 0 50%;
     background-color: white;
@@ -52,7 +52,3 @@
 // .dark-mode-toggle .icon {
 //     font-size: 1.5rem;
 // }
-
-.dark-mode-toggle:hover {
-    opacity: 0.8;
-}
