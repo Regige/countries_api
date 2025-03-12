@@ -1,6 +1,7 @@
 <app-header></app-header>
 <app-back-btn></app-back-btn>
 <div class="country-card">
+  @if(country) {
   <img [src]="country.flag" alt="" />
   <div class="country-info">
     <h3>{{ country.name }}</h3>
@@ -61,4 +62,5 @@
       }
     </div>
   </div>
+  }
 </div>

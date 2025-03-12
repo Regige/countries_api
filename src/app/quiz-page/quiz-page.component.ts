@@ -35,7 +35,7 @@ export class QuizPageComponent {
   ngOnInit(): void {
     this.data.allCountries = this.data.getCountriesFromSession();
 
-    this.ranCountry = this.getRandomCountry();
+    this.ranCountry = this.getRandomCountry() || { name: "Unknown", flag: "" };
     console.log(this.ranCountry);
 
     this.fuse = new Fuse(this.data.allCountries, {

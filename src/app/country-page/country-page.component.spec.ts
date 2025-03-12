@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CountryPageComponent } from './country-page.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CountryPageComponent', () => {
   let component: CountryPageComponent;
@@ -8,7 +10,7 @@ describe('CountryPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CountryPageComponent]
+      imports: [CountryPageComponent, HttpClientModule, RouterModule.forRoot([])]
     })
     .compileComponents();
     
